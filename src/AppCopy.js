@@ -32,15 +32,15 @@ class JeopardyBoxes extends React.Component {
       {
         id: 8,
         value: 200,
-        question:
-          "Vilken film är associerad med låten Im a Beliver av Smash Mouth?",
+        question: "Vilket populärt pojkband är med i filmerna camp rock?",
         clicked: false,
       },
 
       {
         id: 9,
         value: 400,
-        question: "Vad handlar låten Pumped up kicks av Foster the People om?",
+        question:
+          "Vilka två kända skådespelare spelar Barbie och Ken i den nya Barbiefilmen som ska släppas nästa år?",
         clicked: false,
       },
       {
@@ -53,14 +53,14 @@ class JeopardyBoxes extends React.Component {
       {
         id: 11,
         value: 400,
-        question: "Vilket år blev Musical.ly uppköpt av Tiktok?",
+        question: "Vilken serie blev Olivia Rodrigo känd för?",
         clicked: false,
       },
       {
         id: 12,
         value: 400,
         question:
-          "Vad kallas den Mexikanska högtiden som firas i Disneyfilmen Coco?",
+          "Vad heter skådespelaren som sjunger låten Getcha head in the game?",
         clicked: false,
       },
 
@@ -75,22 +75,20 @@ class JeopardyBoxes extends React.Component {
       {
         id: 15,
         value: 600,
-        question: "Vilken serie blev Olivia Rodrigo känd för?",
+        question: "Vilken film är associerad med den här låten?",
         clicked: false,
       },
       {
         id: 16,
         value: 600,
-        question:
-          "Vad heter planeten som Anakin Skywalker och Obi-Wan Kenobi slåss på i filmen Star Wars: Revenge of the Sith?",
+        question: "Vilken scen i Revenge of the sith spelas den här musiken?",
         clicked: false,
       },
 
       {
         id: 17,
         value: 800,
-        question:
-          "Vilka två kända skådespelare spelar Barbie och Ken i den nya Barbiefilmen som ska släppas nästa år?",
+        question: "Namnge alla fem spice girls scennamn.",
         clicked: false,
       },
       {
@@ -103,67 +101,50 @@ class JeopardyBoxes extends React.Component {
       {
         id: 19,
         value: 800,
-        question:
-          "Vilken känd egirl/porrstjärna jobbar numera med Oliver Tree?",
+        question: 'Vilken Kardashian sade det kända citatet "abcdefg"?',
         clicked: false,
       },
       {
         id: 20,
         value: 800,
-        question: "Vilket år släpptes den första James Bond-filmen Dr. No?",
+        question:
+          "Vilken scen i filmen Prisoner of Azkaban spelas den här musiken?",
         clicked: false,
       },
     ],
-    currentQuestion: null,
   };
 
-  handleClick = (id) => {
+  handleClick = (id, question) => {
+    alert(question);
     this.setState((prevState) => {
       const boxes = prevState.boxes.map((box) => {
         if (box.id === id) {
           return { ...box, clicked: true };
         }
-        return box;
+        return { ...box };
       });
-      return {
-        boxes,
-        currentQuestion: {
-          value: boxes[id - 1].value,
-          question: boxes[id - 1].question,
-        },
-      };
+      return { boxes };
     });
-  };
-
-  handleClose = () => {
-    this.setState({ currentQuestion: null });
   };
 
   render() {
     return (
-      <div>
-        <div className="grid">
-          {this.state.boxes.map((box) => (
-            <div
-              className="box"
-              key={box.id}
-              onClick={() => this.handleClick(box.id)}
-            >
-              {!box.clicked && box.value}
-            </div>
-          ))}
-        </div>
-        {this.state.currentQuestion && (
-          <div className="question-popup">
-            <div className="question-value">
-              {this.state.currentQuestion.value} Poäng
-            </div>
-            <div className="question">
-              {this.state.currentQuestion.question}
-            </div>
-            <button onClick={this.handleClose}>Close</button>
+      <div className="grid">
+        {this.state.boxes.slice(0, 4).map((box) => (
+          <div className="box" key={box.id}>
+            {box.value}
           </div>
-        )}
+        ))}
+
+        {this.state.boxes.slice(4, 20).map((box) => (
+          <div
+            className="box"
+            key={box.id}
+            onClick={() => this.handleClick(box.id, box.question)}
+          >
+            {!box.clicked && box.value}
+          </div>
+        ))}
       </div>
     );
   }

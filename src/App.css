@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+body {
+  background-image: url("../public/PRI_216783794.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.topg {
+  backdrop-filter: blur(10px);
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.grid {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(10px);
+  }
+
+  
+  .box {
+  width: calc(20% - 10px);
+  height: 140px;
+  background-color: rgb(153, 70, 255);
+  border: 5px solid rgb(0, 0, 0);
+  color: white;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .box:hover {
+  background-color: rgb(255, 132, 132);
+  border-color: rgb(0, 0, 0);
   }
-}
+  
+  .box:active {
+  background-color: rgb(236, 255, 170);
+  border-color: rgb(255, 133, 133);
+  }
+
+  .box:active::after {
+  content: " ";
+  }
+
+  .question-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    flex-direction: column;
+    }
+
+    .question-popup button{
+    background-color: rgb(153, 70, 255);
+    border: 2px solid rgb(0, 0, 0);
+    color: white;
+    font-size: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+    .question-popup button:hover{
+    background-color: rgb(255, 132, 132);
+    border-color: rgb(0, 0, 0);
+    }
+    
+    .question-value {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    }
+    
+    .question {
+    font-size: 40px;
+    color: white;
+    }
+
